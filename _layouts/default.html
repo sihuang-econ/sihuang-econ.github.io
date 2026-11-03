@@ -1,0 +1,63 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
+    {% seo %}
+  </head>
+  {% assign page_id = page.url | remove: '/' | remove: '.html' %}
+  {% if page_id == '' %}{% assign page_id = 'home' %}{% endif %}
+  <body class="page-{{ page_id }}">
+    <div class="wrapper">
+      <header>
+        <h1><a href="{{ "/" | absolute_url }}">{{ site.title }}</a></h1>
+
+        <div class="profile-photo">
+          <img src="/assets/img/profile.png" alt="{{ site.title }}">
+        </div>
+
+        <hr class="sidebar-rule">
+
+        <nav>
+          <ul>
+            <li><a href="/docs/CV.pdf">CV</a></li>
+            <li><a href="/research">Research</a></li>
+            <li><a href="/teaching">Teaching</a></li>
+          </ul>
+        </nav>
+
+        <hr class="sidebar-rule">
+
+        <p class="contact">
+          <b>Contact:</b><br>
+          Email: <a href="mailto:si.huang@queensu.ca">si.huang@queensu.ca</a><br>
+          <br>
+          Department of Economics<br>
+          Queen's University<br>
+          Kingston, ON K7L 3N6
+        </p>
+      </header>
+
+      <section>
+        {{ content }}
+      </section>
+    </div>
+
+    <footer class="responsive-footer">
+      <small>Email: <a href="mailto:si.huang@queensu.ca">si.huang@queensu.ca</a></small>
+    </footer>
+
+    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+    <script>
+      document.querySelectorAll('a[href$=".pdf"]').forEach(function(link) {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener');
+      });
+    </script>
+  </body>
+</html>
